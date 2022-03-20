@@ -38,8 +38,6 @@ def dayDay(d, m, y):
     dateDiffAbs = abs(dateDiff)
     dayDiff1 = dateDiffAbs%7  
     
-    print(dateDiff, dayDiff1)
-    
     if dateDiff >= 0:
         dayNow = dayDiff1 + dayToday
     else:
