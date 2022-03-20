@@ -1,5 +1,6 @@
 #Import Date-Time
 from datetime import date, datetime
+
 #Get today's date
 day = date.today()
 dateToday = day.strftime("%d/%m/%Y")
@@ -27,17 +28,22 @@ def dayDay(d, m, y):
     newDate = date(int(y), int(m), int(d))
     dateDiff = (newDate - dateToday2).days
     dateDiffAbs = abs(dateDiff)
-    dayDiff1 = dateDiffAbs%7    
+    dayDiff1 = dateDiffAbs%7  
+    
+    print(dateDiff, dayDiff1)
     
     if dateDiff >= 0:
         dayNow = dayDiff1 + dayToday
     else:
-        if dayToday > dayDiff1:
-            dayNow = dayToday-dayDiff1
+        if (dayToday>dayDiff1):
+            dayNow = dayToday- dayDiff1
         else:
             dayDiff1 = 7-dayDiff1
-            dayNow = dayToday - dayDiff1
+            dayNow = dayToday + dayDiff1
     
+    if dayNow > 7:
+        dayNow = dayNow - 7
+
     return dayNow
 
 #Input date
@@ -70,13 +76,3 @@ if dayNow == 7:
 weekday = dayName[dayNow]
 print("\n")
 print(f"{dateInput} will be/was a {weekday}.")
-
-   
-
-
-    
-
-    
-    
-    
-
