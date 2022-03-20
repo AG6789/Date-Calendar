@@ -36,17 +36,22 @@ def dayDay(d, m, y):
     newDate = date(int(y), int(m), int(d))
     dateDiff = (newDate - dateToday2).days
     dateDiffAbs = abs(dateDiff)
-    dayDiff1 = dateDiffAbs%7    
+    dayDiff1 = dateDiffAbs%7  
+    
+    print(dateDiff, dayDiff1)
     
     if dateDiff >= 0:
         dayNow = dayDiff1 + dayToday
     else:
-        if dayToday > dayDiff1:
-            dayNow = dayToday-dayDiff1
+        if (dayToday>dayDiff1):
+            dayNow = dayToday- dayDiff1
         else:
             dayDiff1 = 7-dayDiff1
-            dayNow = dayToday - dayDiff1
+            dayNow = dayToday + dayDiff1
     
+    if dayNow > 7:
+        dayNow = dayNow - 7
+
     return dayNow
 
 #Input date
@@ -109,15 +114,44 @@ print("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
 
 print(" - "*dayNow, end="")
 count = dayNow + 1
-for x in range(31):
-    if count == 7:
-        count = 0
-        print("%02d" % (x+1,))
+
+if (dayInputString[0] == 1 or dayInputString[0] == 3 or dayInputString[0] == 5 or dayInputString[0] == 7 or dayInputString[0] == 8 or dayInputString[0] == 10 or dayInputString[0] == 12):
+    for x in range(31):
+        if count == 7:
+            count = 0
+            print("%02d" % (x+1,))
+        
+        else:
+            print("%02d" % (x+1,), end=" ")
+        count += 1
+        
+elif (dayInputString[0] == 4 or dayInputString[0] == 6 or dayInputString[0] == 9 or dayInputString[0] == 11):
+    for x in range(30):
+        if count == 7:
+            count = 0
+            print("%02d" % (x+1,))
+        
+        else:
+            print("%02d" % (x+1,), end=" ")
+        count += 1
+
+elif (dayInputString[0] == 2):
+    if (leapYear):
+        for x in range(29):
+            if count == 7:
+                count = 0
+                print("%02d" % (x+1,))
+            
+            else:
+                print("%02d" % (x+1,), end=" ")
+            count += 1
     
     else:
-        print("%02d" % (x+1,), end=" ")
-    count += 1
-    
-    
-    
-
+        for x in range(28):
+            if count == 7:
+                count = 0
+                print("%02d" % (x+1,))
+            
+            else:
+                print("%02d" % (x+1,), end=" ")
+            count += 1
