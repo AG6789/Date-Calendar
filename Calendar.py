@@ -104,9 +104,20 @@ elif (dayInputString[0] == 2):
                 dayNow2 = 0 
                 
 print(" ")
-print("       ", month[dayInputString[0]], dayInputString[1])
-print(" ")
-print("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+print("    ", month[dayInputString[0]], dayInputString[1])
+print("Mo", "Tu", "We", "Th", "Fr", "Sa", "Su")
 
-print(" -  "*dayNow)
+print(" - "*dayNow, end="")
+count = dayNow + 1
+for x in range(31):
+    if count == 7:
+        count = 0
+        print("%02d" % (x+1,))
+    
+    else:
+        print("%02d" % (x+1,), end=" ")
+    count += 1
+    
+    
+    
 
